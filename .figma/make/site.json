@@ -1,0 +1,10 @@
+{
+  "description": "This professional website offers expert health and safety consultancy services for the construction industry, ensuring compliance and reducing risks for clients.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
