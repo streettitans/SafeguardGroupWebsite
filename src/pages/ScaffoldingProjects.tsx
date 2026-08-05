@@ -43,20 +43,20 @@ const domesticTypes = [
 ]
 
 const processSteps = [
-  { num: '01', title: 'Free Site Survey', desc: 'We attend site to assess access, ground conditions and project scope — no cost, no obligation.' },
-  { num: '02', title: 'Detailed Quote', desc: 'A fixed-price written quotation is provided within 24 hours, covering erection, hire, adaptation and striking.' },
-  { num: '03', title: 'Scaffold Erection', desc: 'Our team erects the scaffold to NASC standards, completing a handover inspection before handing keys to your team.' },
-  { num: '04', title: 'Weekly Inspections', desc: 'The scaffold is inspected every 7 days as required by law — included as standard with all hire contracts.' },
-  { num: '05', title: 'Adaptation & Striking', desc: 'Scaffold is adapted as the project progresses and struck upon completion, with the site left clear.' },
+  { num: '01', title: 'Project Brief', desc: 'We review the site, access requirements, interfaces, scaffold scope and intended use.' },
+  { num: '02', title: 'Safety Review', desc: 'Design information, RAMS, sequencing and responsibilities are reviewed before work progresses.' },
+  { num: '03', title: 'Erection Oversight', desc: 'We provide independent safety input during erection and review the handover arrangements before use.' },
+  { num: '04', title: 'Inspection Programme', desc: 'Independent inspections can be agreed for handover, statutory intervals and significant changes.' },
+  { num: '05', title: 'Change & Close-out', desc: 'We support review of alterations and dismantling arrangements through project completion.' },
 ]
 
 const faqs = [
-  { q: 'How much does scaffolding cost for a house?', a: 'Domestic scaffold costs vary depending on the size of the property, the height, access requirements and duration of hire. A typical terraced house scaffold for a re-roof starts from around £600–£900. Semi-detached and detached properties with more complex access typically range from £900–£2,500+. We provide fixed-price written quotations within 24 hours of a free site survey.' },
-  { q: 'Do you provide scaffolding inspections as part of the hire?', a: 'Yes. All scaffold hire contracts include weekly scaffold inspections carried out by a CISRS-registered competent person, as required under the Work at Height Regulations 2005. Written inspection reports and QR-coded certificates are issued after every inspection.' },
+  { q: 'How is scaffolding project support priced?', a: 'Fees depend on the project scope, location, scaffold complexity, inspection frequency and level of ongoing support. Send us the project details and we will agree a clear consultancy scope.' },
+  { q: 'Can inspection support continue throughout the project?', a: 'Yes. Safeguard Group can agree an independent inspection programme covering handover, statutory intervals, significant alterations and events that may have affected stability.' },
   { q: 'How long does it take to erect scaffolding?', a: 'Most domestic scaffolds are erected within half a day to a full day. Larger commercial scaffolds vary depending on complexity and programme. We agree a programme of works with you in advance so your project is not delayed.' },
   { q: 'Do you need planning permission for scaffolding?', a: 'In most cases, no planning permission is required for temporary scaffolding. However, if the scaffold overhangs a public highway or pavement, a licence from the local authority (a Section 169 licence under the Highways Act) is required. We handle all highway licence applications on your behalf.' },
   { q: 'Are you able to erect scaffolding on a listed building?', a: 'Yes. We have significant experience working on listed buildings, conservation areas and heritage structures. We liaise with heritage officers and structural engineers where required to design sensitive scaffold solutions that avoid damage to historic fabric.' },
-  { q: 'What is included in a scaffold hire contract?', a: 'Our scaffold hire contracts include: site survey, scaffold design (where required), erection by NASC-trained operatives, handover inspection certificate, weekly inspection reports throughout the hire period, adaptation as required and full striking on completion. Highway licences and Traffic Management are quoted separately where needed.' },
+  { q: 'What project support can Safeguard Group provide?', a: 'Support can include pre-start review, design and RAMS checks, erection monitoring, independent handover inspection, statutory inspections, change control and dismantling oversight. The scaffold contractor remains responsible for design, erection, alteration and dismantling.' },
 ]
 
 const gallery = [
@@ -76,7 +76,9 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Quote request received. We will contact you within 24 hours to arrange a free site survey.')
+    const subject = encodeURIComponent(`Scaffolding project support enquiry from ${formData.name}`)
+    const body = encodeURIComponent(`Email: ${formData.email}\nPhone: ${formData.phone}\nProject type: ${formData.type}\nSite: ${formData.address}\nDuration: ${formData.duration}\n\n${formData.message}`)
+    window.location.href = `mailto:info@safeguardgroup.co.uk?subject=${subject}&body=${body}`
     setFormData({ name: '', phone: '', email: '', type: '', address: '', duration: '', message: '' })
   }
 
@@ -110,14 +112,14 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               <span className="text-orange-400">Projects</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-2xl">
-              Safe, compliant and competitively priced scaffolding for commercial developments and domestic projects across the UK. NASC-standard erection, built-in weekly inspections and fixed-price contracts.
+              Independent safety and inspection support for commercial and domestic scaffolding projects, from pre-start planning through erection, alteration and dismantling.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#quote" className="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
                 Get a Free Quote <IconArrowRight className="w-4 h-4" />
               </a>
-              <a href="tel:+441234567890" className="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
-                <IconPhone /> Call 0800 123 4567
+              <a href="mailto:info@safeguardgroup.co.uk" className="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
+                <IconMail /> Email project details
               </a>
             </div>
           </div>
@@ -129,7 +131,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
         <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 divide-x divide-orange-400">
           {[
             { val: '500+', label: 'Projects Completed' },
-            { val: '24hr', label: 'Quote Turnaround' },
+            { val: 'Clear', label: 'Agreed Scope' },
             { val: 'Free', label: 'Site Surveys' },
             { val: 'NASC', label: 'Standard Erection' },
           ].map((s) => (
@@ -171,13 +173,13 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                     Commercial Scaffolding<br />for Any Scale of Project
                   </h2>
                   <p className="text-neutral-500 text-base leading-relaxed mb-8">
-                    From single-storey retail refurbishments to multi-storey commercial new builds, Safeguard Group designs and erects NASC-compliant scaffolding coordinated with your construction programme. All commercial contracts include weekly inspection reports as standard.
+                    From single-storey refurbishment to multi-storey development, Safeguard Group provides independent scaffold safety input coordinated with your construction programme. We do not design or erect the scaffold; we support oversight, inspection and compliance.
                   </p>
                   <div className="space-y-3">
                     {[
                       'TG20 and bespoke-designed scaffold solutions',
                       'Temporary Works engineering coordination',
-                      'Fully insured — £10m public liability',
+                      'Independent professional oversight',
                       'RAMS and Method Statements provided',
                       'Highway licence applications managed',
                       'Traffic Management coordination',
@@ -222,13 +224,13 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                     Domestic Scaffolding for<br />Homeowners &amp; Builders
                   </h2>
                   <p className="text-neutral-500 text-base leading-relaxed mb-8">
-                    Whether you&#39;re a homeowner planning a re-roof, a self-builder constructing an extension or a small contractor working on a loft conversion, Safeguard Group provides safe, competitively priced domestic scaffolding with built-in weekly inspections and same-day certificates.
+                    Whether you are a homeowner planning a re-roof, a self-builder constructing an extension or a contractor delivering a refurbishment, Safeguard Group can provide independent inspection and safety support for the scaffold package.
                   </p>
                   <div className="space-y-3">
                     {[
                       'Free no-obligation site surveys',
                       'Fixed-price written quotations within 24 hours',
-                      'NASC-trained operatives',
+                      'Independent erection monitoring',
                       'Weekly inspections included — required by law',
                       'Fully insured — public liability covered',
                       'Fast erection — most homes within one day',
@@ -346,9 +348,9 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               </p>
               <div className="grid grid-cols-2 gap-5">
                 {[
-                  { val: '£10m', label: 'Public Liability Cover' },
+                  { val: '21+', label: 'Years Experience' },
                   { val: 'NASC', label: 'Standard Erection' },
-                  { val: '24hr', label: 'Quote Turnaround' },
+                  { val: 'Clear', label: 'Agreed Scope' },
                   { val: 'Free', label: 'Site Surveys' },
                 ].map((item) => (
                   <div key={item.label} className="bg-neutral-50 border border-neutral-200 rounded-2xl p-5">
@@ -405,11 +407,11 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                 Free Site Survey &amp;<br /><span className="text-orange-400">Fixed-Price Quote</span>
               </h2>
               <p className="text-white/60 text-base leading-relaxed mb-8">
-                Tell us about your project and we will arrange a free site survey and return a fixed-price quotation within 24 hours. No hidden costs, no surprises.
+                Tell us about the project, scaffold package, location and programme. We will discuss the independent inspection or consultancy scope that best fits the work.
               </p>
               <div className="space-y-4 mb-8">
                 {[
-                  { icon: <IconPhone />, text: '0800 123 4567 — Monday to Saturday, 7am–6pm' },
+                  { icon: <IconMail />, text: 'info@safeguardgroup.co.uk' },
                   { icon: <IconMail />, text: 'projects@safeguardgroup.co.uk' },
                   { icon: <IconMapPin />, text: 'Covering England, Scotland & Wales' },
                 ].map((item) => (
@@ -421,7 +423,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               </div>
               <div className="p-5 bg-white/5 border border-white/10 rounded-2xl">
                 <div className="text-sm font-semibold text-white mb-2">What&#39;s included in the quote?</div>
-                {['Free site survey', 'Scaffold erection to NASC standards', 'Handover inspection certificate', 'Weekly inspection reports throughout hire', 'Scaffold adaptation as required', 'Striking on project completion'].map((item) => (
+                {['Project safety review', 'Erection monitoring', 'Independent handover inspection', 'Statutory inspection support', 'Alteration and change review', 'Dismantling oversight'].map((item) => (
                   <div key={item} className="flex items-center gap-2.5 mt-2">
                     <div className="text-orange-400"><IconCheck className="w-4 h-4" /></div>
                     <span className="text-white/60 text-sm">{item}</span>
@@ -490,7 +492,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               <button type="submit" className="btn-primary w-full py-4 rounded-xl text-base flex items-center justify-center gap-2">
                 Request Free Quote <IconArrowRight />
               </button>
-              <p className="text-xs text-neutral-400 text-center">Free site survey arranged. Fixed-price quote within 24 hours.</p>
+              <p className="text-xs text-neutral-400 text-center">This form prepares an email in your device. Your details are not stored by this website.</p>
             </form>
           </div>
         </div>
