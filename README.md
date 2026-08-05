@@ -26,13 +26,12 @@ The site is a Vite static build. Deploy the `dist` directory after running `npm 
 
 SPA rewrites are included for both Vercel (`vercel.json`) and Netlify (`public/_redirects`).
 
-Copy `.env.example` to the deployment environment and replace the placeholder contact values and final production domain. The same final domain must also be applied to `public/robots.txt` and `public/sitemap.xml` if it differs from the default.
+Confirm the production email address and domain before launch. If the final domain differs from the default, update `index.html`, `public/robots.txt` and `public/sitemap.xml`.
 
 ## Content and SEO
 
-- Responsive service, about, contact, privacy and 404 pages
+- Responsive home, scaffold inspection and scaffolding project support pages
 - Route-specific titles, descriptions, canonical URLs and Open Graph metadata
-- LocalBusiness structured data
 - `robots.txt` and XML sitemap
-- Keyboard navigation, semantic landmarks and reduced-motion support
+- Keyboard navigation and semantic landmarks
 - No analytics or non-essential cookies enabled by default
