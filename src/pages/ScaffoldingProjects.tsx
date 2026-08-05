@@ -25,10 +25,10 @@ function useScrollReveal() {
 }
 
 const commercialTypes = [
-  { icon: <IconBuilding2 />, title: 'Office & Retail Refurbishment', desc: 'Façade access scaffolding, roof level working platforms and internal scaffold towers for office blocks, retail units and mixed-use developments.' },
-  { icon: <IconTool />, title: 'Industrial & Warehouse', desc: 'Heavy-duty access scaffolding for manufacturing plants, distribution warehouses, power stations and industrial process facilities.' },
-  { icon: <IconRuler />, title: 'New Build Commercial', desc: 'Full-perimeter scaffolding for new commercial builds from ground up — coordinated with the principal contractor and structural programme.' },
-  { icon: <IconShield />, title: 'Heritage & Listed Buildings', desc: 'Sensitive scaffold designs for listed buildings, conservation areas and heritage structures where standard solutions are not appropriate.' },
+  { icon: <IconBuilding2 />, title: 'Office & Retail Refurbishment', desc: 'Independent review of façade access, roof-level platforms and internal towers for office, retail and mixed-use projects.' },
+  { icon: <IconTool />, title: 'Industrial & Warehouse', desc: 'Inspection and safety oversight for complex access scaffolds in industrial and logistics environments.' },
+  { icon: <IconRuler />, title: 'New Build Commercial', desc: 'Project support for perimeter scaffolds coordinated with the principal contractor and construction programme.' },
+  { icon: <IconShield />, title: 'Heritage & Listed Buildings', desc: 'Review of sensitive scaffold arrangements for listed buildings, conservation areas and heritage structures.' },
   { icon: <IconUsers />, title: 'Hotel & Hospitality', desc: 'Minimum-disruption access scaffolding for hotel renovations, façade cleaning and external cladding works — managed around live operations.' },
   { icon: <IconBuilding2 />, title: 'Infrastructure & Civil', desc: 'Bridge scaffold, viaduct access, retaining wall works and specialist civil engineering scaffold for infrastructure programmes.' },
 ]
@@ -53,9 +53,9 @@ const processSteps = [
 const faqs = [
   { q: 'How is scaffolding project support priced?', a: 'Fees depend on the project scope, location, scaffold complexity, inspection frequency and level of ongoing support. Send us the project details and we will agree a clear consultancy scope.' },
   { q: 'Can inspection support continue throughout the project?', a: 'Yes. Safeguard Group can agree an independent inspection programme covering handover, statutory intervals, significant alterations and events that may have affected stability.' },
-  { q: 'How long does it take to erect scaffolding?', a: 'Most domestic scaffolds are erected within half a day to a full day. Larger commercial scaffolds vary depending on complexity and programme. We agree a programme of works with you in advance so your project is not delayed.' },
-  { q: 'Do you need planning permission for scaffolding?', a: 'In most cases, no planning permission is required for temporary scaffolding. However, if the scaffold overhangs a public highway or pavement, a licence from the local authority (a Section 169 licence under the Highways Act) is required. We handle all highway licence applications on your behalf.' },
-  { q: 'Are you able to erect scaffolding on a listed building?', a: 'Yes. We have significant experience working on listed buildings, conservation areas and heritage structures. We liaise with heritage officers and structural engineers where required to design sensitive scaffold solutions that avoid damage to historic fabric.' },
+  { q: 'When should project safety support begin?', a: 'Early input is best. Reviewing the scaffold brief, design information, RAMS, interfaces and programme before erection helps identify gaps before they become site problems.' },
+  { q: 'Who remains responsible for the scaffold?', a: 'The appointed designers, scaffold contractor and project dutyholders retain their legal and contractual responsibilities. Safeguard Group provides independent inspection and consultancy support; it does not take over the scaffold contractor’s delivery duties.' },
+  { q: 'Can you support complex or sensitive projects?', a: 'Yes. Contact us with the scaffold type, design status, site constraints and project location so we can confirm the competent support required and our availability.' },
   { q: 'What project support can Safeguard Group provide?', a: 'Support can include pre-start review, design and RAMS checks, erection monitoring, independent handover inspection, statutory inspections, change control and dismantling oversight. The scaffold contractor remains responsible for design, erection, alteration and dismantling.' },
 ]
 
@@ -130,10 +130,10 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
       <section className="bg-orange-500">
         <div className="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 divide-x divide-orange-400">
           {[
-            { val: '500+', label: 'Projects Completed' },
+            { val: '21+', label: 'Years Experience' },
             { val: 'Clear', label: 'Agreed Scope' },
-            { val: 'Free', label: 'Site Surveys' },
-            { val: 'NASC', label: 'Standard Erection' },
+            { val: '7-day', label: 'Inspection Cycle' },
+            { val: 'Independent', label: 'Oversight' },
           ].map((s) => (
             <div key={s.label} className="text-center px-4 py-2">
               <div className="text-2xl font-black text-white" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{s.val}</div>
@@ -177,12 +177,12 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                   </p>
                   <div className="space-y-3">
                     {[
-                      'TG20 and bespoke-designed scaffold solutions',
-                      'Temporary Works engineering coordination',
+                      'TG20 and bespoke-design information review',
+                      'Temporary Works interface review',
                       'Independent professional oversight',
-                      'RAMS and Method Statements provided',
-                      'Highway licence applications managed',
-                      'Traffic Management coordination',
+                      'RAMS and method statement verification',
+                      'Permit and licence interface checks',
+                      'Traffic management interface review',
                     ].map((item) => (
                       <div key={item} className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center flex-shrink-0">
@@ -228,12 +228,12 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                   </p>
                   <div className="space-y-3">
                     {[
-                      'Free no-obligation site surveys',
-                      'Fixed-price written quotations within 24 hours',
+                      'Clear project scope review',
+                      'Agreed consultancy proposal',
                       'Independent erection monitoring',
-                      'Weekly inspections included — required by law',
-                      'Fully insured — public liability covered',
-                      'Fast erection — most homes within one day',
+                      'Statutory inspection programme available',
+                      'Photographic digital reporting',
+                      'Alteration and dismantling oversight',
                     ].map((item) => (
                       <div key={item} className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center flex-shrink-0">
@@ -329,12 +329,12 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-neutral-200">
                 <img
                   src="https://images.unsplash.com/photo-1772617661437-8103db985d70?w=800&h=600&fit=crop&auto=format"
-                  alt="New homes under construction with NASC-standard scaffolding"
+                  alt="New homes under construction with access scaffolding"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-6 left-6 bg-orange-500 text-white rounded-2xl p-5 shadow-xl">
-                  <div className="text-3xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>500+</div>
-                  <div className="text-xs text-orange-100 mt-1 font-medium">Projects Completed</div>
+                  <div className="text-3xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>21+</div>
+                  <div className="text-xs text-orange-100 mt-1 font-medium">Years in Scaffolding</div>
                 </div>
               </div>
             </div>
@@ -344,14 +344,14 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                 Safety &amp; Compliance<br />Built Into Every Contract
               </h2>
               <p className="text-neutral-500 text-base leading-relaxed mb-8">
-                Unlike scaffolding-only contractors, Safeguard Group combines scaffold erection with independent inspection expertise. Every contract includes the weekly inspections required by law — with reports issued to your site manager and records retained on our secure platform.
+                Safeguard Group brings independent inspection expertise to the scaffold package. We work alongside the client, principal contractor and scaffold contractor while remaining clear that design, erection, alteration and dismantling duties stay with the appointed delivery team.
               </p>
               <div className="grid grid-cols-2 gap-5">
                 {[
                   { val: '21+', label: 'Years Experience' },
-                  { val: 'NASC', label: 'Standard Erection' },
+                  { val: '7-day', label: 'Inspection Cycle' },
                   { val: 'Clear', label: 'Agreed Scope' },
-                  { val: 'Free', label: 'Site Surveys' },
+                  { val: 'Clear', label: 'Digital Reporting' },
                 ].map((item) => (
                   <div key={item.label} className="bg-neutral-50 border border-neutral-200 rounded-2xl p-5">
                     <div className="text-3xl font-black text-orange-500 mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{item.val}</div>
@@ -402,9 +402,9 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="reveal">
-              <p className="text-orange-400 text-xs font-semibold uppercase tracking-widest mb-4">Get a Quote</p>
+              <p className="text-orange-400 text-xs font-semibold uppercase tracking-widest mb-4">Project enquiry</p>
               <h2 className="text-white mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(26px, 2.8vw, 40px)', fontWeight: 700, lineHeight: 1.25 }}>
-                Free Site Survey &amp;<br /><span className="text-orange-400">Fixed-Price Quote</span>
+                Discuss Your Scaffold<br /><span className="text-orange-400">Project Support</span>
               </h2>
               <p className="text-white/60 text-base leading-relaxed mb-8">
                 Tell us about the project, scaffold package, location and programme. We will discuss the independent inspection or consultancy scope that best fits the work.
@@ -412,8 +412,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               <div className="space-y-4 mb-8">
                 {[
                   { icon: <IconMail />, text: 'info@safeguardgroup.co.uk' },
-                  { icon: <IconMail />, text: 'projects@safeguardgroup.co.uk' },
-                  { icon: <IconMapPin />, text: 'Covering England, Scotland & Wales' },
+                  { icon: <IconMapPin />, text: 'Hertfordshire, London and UK project support' },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-3 text-white/60 text-sm">
                     <div className="text-orange-400">{item.icon}</div>
@@ -422,7 +421,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
                 ))}
               </div>
               <div className="p-5 bg-white/5 border border-white/10 rounded-2xl">
-                <div className="text-sm font-semibold text-white mb-2">What&#39;s included in the quote?</div>
+                <div className="text-sm font-semibold text-white mb-2">Support can include</div>
                 {['Project safety review', 'Erection monitoring', 'Independent handover inspection', 'Statutory inspection support', 'Alteration and change review', 'Dismantling oversight'].map((item) => (
                   <div key={item} className="flex items-center gap-2.5 mt-2">
                     <div className="text-orange-400"><IconCheck className="w-4 h-4" /></div>
@@ -432,7 +431,7 @@ export default function ScaffoldingProjects({ onNavigate }: Props) {
               </div>
             </div>
             <form onSubmit={handleSubmit} className="reveal bg-white rounded-3xl p-8 space-y-5" style={{ transitionDelay: '0.15s' }}>
-              <div className="text-lg font-bold text-neutral-900 mb-1">Request a Free Quote</div>
+              <div className="text-lg font-bold text-neutral-900 mb-1">Request Project Support</div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-1.5">Name *</label>
