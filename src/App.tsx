@@ -64,7 +64,7 @@ const services = [
   { icon: <IconUsers />, title: 'CDM Principal Contractor', desc: 'Principal Contractor support — site safety plans, F10 notifications and legislative compliance.', page: null },
   { icon: <IconZap />, title: 'Incident Investigation', desc: 'Thorough incident and near-miss investigation with root cause analysis and corrective action planning.', page: null },
   { icon: <IconTrendingUp />, title: 'Safety Culture Improvement', desc: 'Behavioural safety programmes, toolbox talks and workforce engagement strategies.', page: null },
-  { icon: <IconCertificate />, title: 'Commercial & Domestic Scaffolding', desc: 'Fixed-price scaffolding for commercial developments and domestic properties. Free site surveys.', page: 'scaffolding-projects' as Page },
+  { icon: <IconCertificate />, title: 'Scaffolding Project Support', desc: 'Independent safety input for commercial and domestic projects from planning through dismantling.', page: 'scaffolding-projects' as Page },
 ]
 
 const industries = [
@@ -74,19 +74,18 @@ const industries = [
 ]
 
 const testimonials = [
-  { name: 'James Hartley', role: 'Construction Director, Meridian Build', text: "Safeguard Group transformed our safety culture across all sites. Their scaffold inspection reports are meticulous, and the team responds quickly — even for emergency inspections. We wouldn't use anyone else.", rating: 5 },
-  { name: 'Sarah Blackwood', role: 'H&S Manager, Apex Contractors', text: 'Having Safeguard as our independent safety executive gives our clients confidence and keeps our sites compliant. The CDM support has been invaluable on our larger schemes.', rating: 5 },
-  { name: 'David Chen', role: 'Project Manager, Stonegate Developments', text: 'Professional, thorough and genuinely knowledgeable. Their RAMS review process has reduced our incidents significantly. The photographic inspection reports are excellent for audit trails.', rating: 5 },
-  { name: 'Rachel Moore', role: 'Director, MooreBuild Ltd', text: "Nationwide coverage, fast turnaround and reports that actually add value. Safeguard's consultants know construction inside-out — they don't just tick boxes.", rating: 5 },
+  { name: 'Independent', role: 'Clear professional judgement', text: 'Impartial inspection findings that help dutyholders understand the condition of the scaffold and decide what happens next.', rating: 5 },
+  { name: 'Experienced', role: 'More than 21 years in scaffolding', text: 'Advice shaped by advanced scaffold inspection, hands-on delivery and eight years running a scaffolding business.', rating: 5 },
+  { name: 'Practical', role: 'Actions site teams can use', text: 'Clear reports, photographic evidence and proportionate recommendations focused on resolving risk.', rating: 5 },
 ]
 
 const faqs = [
-  { q: 'What is a scaffold inspection and how often is one required?', a: "Under the Work at Height Regulations 2005 and NASC TG20, scaffolding must be inspected by a competent person at regular intervals: before first use, every 7 days, and after any event that could affect stability (e.g. adverse weather). Safeguard Group provides weekly scaffold inspection services with same-day digital reporting." },
-  { q: 'What areas of the UK does Safeguard Group cover?', a: "Safeguard Group operates nationwide across England, Scotland and Wales. Our consultants are based regionally to ensure rapid response times. Emergency scaffold inspections can typically be arranged within 24–48 hours." },
-  { q: 'What qualifications do your health and safety consultants hold?', a: "All Safeguard Group consultants hold relevant IOSH, NEBOSH and CITB qualifications. Our scaffold inspectors are CISRS-registered and trained to NASC standards. We carry full professional indemnity and public liability insurance." },
-  { q: 'Can you act as Principal Designer under CDM 2015?', a: "Yes. Safeguard Group offers a full CDM Principal Designer service, managing design-stage health and safety obligations, coordinating the pre-construction health and safety file, and maintaining ongoing compliance throughout the project lifecycle." },
-  { q: 'What does a scaffold inspection report include?', a: "Our scaffold inspection reports include: a condition rating (Pass/Fail/Advisory), photographic evidence of all defects, scaffold location reference, tie pattern verification, SG4 and TG20 compliance check, and a legally admissible certificate. Reports are delivered digitally on the day of inspection." },
-  { q: 'How do I arrange an emergency scaffold inspection?', a: "Call our 24/7 emergency line or complete our online booking form. We aim to respond to emergency inspection requests within 24 hours. Temporary Works inspections and post-incident assessments are also available at short notice." },
+  { q: 'What is a scaffold inspection and how often is one required?', a: "Under the Work at Height Regulations 2005, scaffolding must be inspected by a competent person before first use, at least every 7 days while in use, and after events that may have affected stability. Safeguard Group can provide planned or individual inspections with clear digital reporting." },
+  { q: 'What areas does Safeguard Group cover?', a: "Safeguard Group is based in Hertfordshire and supports projects in London and across the UK, subject to project scope and availability." },
+  { q: 'What experience supports your scaffold inspections?', a: "Safeguard Group is led by an Advanced Scaffold Inspector with more than 21 years in scaffolding and eight years of experience running a scaffolding business." },
+  { q: 'What construction safety support is available?', a: "Support can include site audits, RAMS verification, working-at-height reviews, temporary works, plant, lifting, fire, COSHH and corrective-action tracking. Contact us to discuss the competent support required for your project." },
+  { q: 'What does a scaffold inspection report include?', a: "Reports record the scaffold location, inspection findings, condition, restrictions, photographic evidence and actions required. Delivery times are agreed when the inspection is booked." },
+  { q: 'How do I request a responsive scaffold inspection?', a: "Email the site location, scaffold type, reason for the inspection and required timescale. We will confirm availability and scope as soon as practicable." },
 ]
 
 // ─── Home Page ───────────────────────────────────────────────────────
@@ -111,7 +110,9 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Thank you for your enquiry. A Safeguard Group consultant will contact you within 2 hours.')
+    const subject = encodeURIComponent(`Safeguard Group enquiry from ${formData.name}`)
+    const body = encodeURIComponent(`Company: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\n\n${formData.message}`)
+    window.location.href = `mailto:info@safeguardgroup.co.uk?subject=${subject}&body=${body}`
     setFormData({ name: '', company: '', email: '', phone: '', service: '', message: '' })
   }
 
@@ -128,7 +129,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-400 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8">
               <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-              UK Health &amp; Safety Consultancy — Est. 2010
+              Construction Safety &amp; Scaffold Inspection Specialists
             </div>
             <h1 className="text-shadow-lg text-white leading-tight mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(38px, 4.8vw, 66px)', fontWeight: 800, lineHeight: 1.15 }}>
               Protecting Construction
@@ -136,7 +137,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               <br />Health &amp; Safety.
             </h1>
             <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-              Helping contractors, developers and construction companies remain compliant, reduce risk and protect their workforce — nationwide.
+              Helping contractors, developers and site teams understand risk, strengthen control and protect their workforce.
             </p>
             <div className="flex flex-wrap gap-4">
               <button onClick={() => { onNavigate('scaffold-inspections'); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="btn-primary px-8 py-4 rounded-full text-base flex items-center gap-2">
@@ -147,7 +148,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               </a>
             </div>
             <div className="mt-14 flex flex-wrap items-center gap-6">
-              {['IOSH Qualified', 'NEBOSH Certified', 'NASC Compliant', 'Nationwide Coverage', 'Fully Insured'].map((t) => (
+              {['Advanced Scaffold Inspector', '21+ Years Experience', 'Independent Advice', 'UK Project Support'].map((t) => (
                 <div key={t} className="flex items-center gap-1.5">
                   <div className="text-orange-400"><IconCheck className="w-4 h-4" /></div>
                   <span className="text-white/70 text-sm">{t}</span>
@@ -167,7 +168,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
         <div className="flex gap-0 trust-scroll" style={{ width: 'max-content' }}>
           {[...Array(2)].map((_, di) => (
             <div key={di} className="flex items-center gap-12 px-8">
-              {['IOSH Member', 'NEBOSH Certified', 'NASC Compliant', 'CITB Registered', 'CHAS Accredited', 'Safe Contractor', 'Construction Line', 'ISO 45001', 'SSIP Member', 'CDM 2015 Compliant'].map((b) => (
+              {['Advanced Scaffold Inspection', 'Construction Safety Audits', 'Scaffolding Project Support', 'RAMS Verification', 'Working at Height', 'Temporary Works'].map((b) => (
                 <div key={b} className="flex items-center gap-2.5 whitespace-nowrap">
                   <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0 text-white">
                     <IconCheck className="w-4 h-4" />
@@ -188,10 +189,10 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
             <h2 className="text-white" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 800 }}>Trusted Across UK Construction</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-x divide-white/10 border border-white/10 rounded-2xl overflow-hidden">
-            <StatItem value={2400} suffix="+" label="Scaffold Inspections Completed" inView={statsInView} />
-            <StatItem value={350} suffix="+" label="Active Clients Nationwide" inView={statsInView} />
-            <StatItem value={14} suffix="+" label="Years Industry Experience" inView={statsInView} />
-            <StatItem value={99} suffix="%" label="Client Satisfaction Rate" inView={statsInView} />
+            <StatItem value={21} suffix="+" label="Years in Scaffolding" inView={statsInView} />
+            <StatItem value={8} suffix="" label="Years Running a Scaffolding Business" inView={statsInView} />
+            <StatItem value={7} suffix="-day" label="Statutory Inspection Cycle" inView={statsInView} />
+            <StatItem value={3} suffix="" label="Core Consultancy Services" inView={statsInView} />
           </div>
         </div>
       </section>
@@ -246,10 +247,10 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
                 Scaffold Inspection<br /><span className="text-orange-400">Services</span>
               </h2>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
-                NASC TG20 and SG4 compliant scaffold inspections carried out by CISRS-registered inspectors. Digital reports delivered on the same day with photographic evidence.
+                Independent scaffold inspections led by an Advanced Scaffold Inspector, with clear reporting, photographic evidence and practical action priorities.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-10">
-                {['TG20 & SG4 Compliance', 'NASC Standards', 'Same-Day Reports', 'Photo Evidence', 'Defect Scheduling', 'QR Certificates', 'Weekly Plans', '24hr Emergency'].map((f) => (
+                {['TG20 & SG4 Review', 'Work at Height', 'Clear Digital Reports', 'Photo Evidence', 'Defect Scheduling', 'Handover Checks', '7-Day Inspections', 'Responsive Support'].map((f) => (
                   <div key={f} className="flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center flex-shrink-0 text-orange-400"><IconCheck className="w-3 h-3" /></div>
                     <span className="text-white/80 text-sm">{f}</span>
@@ -264,7 +265,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
             </div>
             <div className="relative reveal" style={{ transitionDelay: '0.15s' }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/5] bg-neutral-800">
-                <img src="https://images.unsplash.com/photo-1591588582259-e675bd2e6088?w=800&h=1000&fit=crop&auto=format" alt="CISRS-registered scaffold inspector checking scaffolding compliance" className="w-full h-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1591588582259-e675bd2e6088?w=800&h=1000&fit=crop&auto=format" alt="Scaffold inspector checking scaffolding compliance" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[200px]">
@@ -272,8 +273,8 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
                 <div className="text-xs text-neutral-600 font-medium leading-tight">Emergency inspection response</div>
               </div>
               <div className="absolute -top-6 -right-6 bg-orange-500 rounded-2xl p-5 shadow-2xl max-w-[180px]">
-                <div className="text-3xl font-black text-white mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>100%</div>
-                <div className="text-xs text-white/80 font-medium leading-tight">Digital same-day report delivery</div>
+                <div className="text-3xl font-black text-white mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>Clear</div>
+                <div className="text-xs text-white/80 font-medium leading-tight">Digital reporting and action priorities</div>
               </div>
             </div>
           </div>
@@ -290,8 +291,8 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               </div>
               <div className="absolute top-8 -left-4 w-2 h-24 bg-orange-500 rounded-full" />
               <div className="absolute -bottom-6 -right-6 bg-neutral-900 text-white rounded-2xl p-6 shadow-2xl">
-                <div className="text-4xl font-black text-orange-400 mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>350+</div>
-                <div className="text-sm text-white/60">Active clients across<br />the United Kingdom</div>
+                <div className="text-4xl font-black text-orange-400 mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>21+</div>
+                <div className="text-sm text-white/60">Years of scaffolding<br />industry experience</div>
               </div>
             </div>
             <div className="reveal" style={{ transitionDelay: '0.15s' }}>
@@ -305,8 +306,8 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               <div className="space-y-5">
                 {[
                   { title: 'Fully Independent', desc: 'No conflicts of interest. Our advice serves your safety obligations, not commercial pressures.' },
-                  { title: 'Qualified Specialists', desc: 'IOSH, NEBOSH and CITB-qualified consultants with hands-on construction experience.' },
-                  { title: 'Rapid Response', desc: 'Emergency inspections, same-day reports and dedicated consultant support.' },
+                  { title: 'Advanced Inspection Experience', desc: 'Scaffold inspection led by more than two decades of hands-on industry knowledge.' },
+                  { title: 'Responsive Support', desc: 'Inspection availability and reporting times agreed clearly for each project.' },
                   { title: 'Nationwide Coverage', desc: 'Regional consultants covering England, Scotland and Wales.' },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-4">
@@ -420,15 +421,15 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
         <div className="relative max-w-7xl mx-auto px-6 text-center reveal">
           <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            24/7 Emergency Inspections Available
+            Planned and responsive inspection support
           </div>
           <h2 className="text-white mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(32px, 3.8vw, 52px)', fontWeight: 800, lineHeight: 1.2 }}>
             Protect Your Site.<br /><span className="text-orange-400">Protect Your People.</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">Talk to a qualified health and safety consultant today. We respond within 2 hours and arrange site visits within 48 hours.</p>
+          <p className="text-white/60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">Tell us about your project, location and timescale and we will discuss the most useful next step.</p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="#contact" className="btn-primary px-8 py-4 rounded-full text-base flex items-center gap-2">Request Consultation <IconArrowRight /></a>
-            <a href="tel:+441234567890" className="btn-outline px-8 py-4 rounded-full text-base flex items-center gap-2"><IconPhone /> Call 0800 123 4567</a>
+            <a href="mailto:info@safeguardgroup.co.uk" className="btn-outline px-8 py-4 rounded-full text-base flex items-center gap-2"><IconMail /> Email Safeguard Group</a>
           </div>
         </div>
       </section>
@@ -442,13 +443,11 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               <h2 className="mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 700, color: '#111111', lineHeight: 1.1 }}>
                 Request a Consultation<br />or Book an Inspection
               </h2>
-              <p className="text-neutral-500 text-base leading-relaxed mb-10">Our consultants respond within 2 hours. Emergency scaffold inspections arranged within 24–48 hours nationwide.</p>
+              <p className="text-neutral-500 text-base leading-relaxed mb-10">Share the site location, timescale and support required. We will respond as soon as practicable to agree scope and availability.</p>
               <div className="space-y-5 mb-10">
                 {[
-                  { icon: <IconPhone />, label: 'Main Line', value: '0800 123 4567' },
-                  { icon: <IconPhone />, label: 'Emergency Line', value: '0800 123 4568' },
                   { icon: <IconMail />, label: 'Email', value: 'info@safeguardgroup.co.uk' },
-                  { icon: <IconMapPin />, label: 'Head Office', value: 'Birmingham, West Midlands (Nationwide Coverage)' },
+                  { icon: <IconMapPin />, label: 'Based in', value: 'Hertfordshire — supporting projects in London and across the UK' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center flex-shrink-0">{item.icon}</div>
@@ -506,7 +505,7 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
               <button type="submit" className="btn-primary w-full py-4 rounded-xl text-base flex items-center justify-center gap-2">
                 Send Enquiry <IconArrowRight />
               </button>
-              <p className="text-xs text-neutral-400 text-center">We respond within 2 hours. Emergency: 0800 123 4568</p>
+              <p className="text-xs text-neutral-400 text-center">This form prepares an email in your device. Your enquiry is not stored by the website.</p>
             </form>
           </div>
         </div>
@@ -517,9 +516,33 @@ function HomePage({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
 // ─── App (Router) ─────────────────────────────────────────────────────
 export default function App() {
-  const [page, setPage] = useState<Page>('home')
+  const pageFromPath = (): Page => {
+    if (window.location.pathname === '/scaffold-inspections') return 'scaffold-inspections'
+    if (window.location.pathname === '/scaffolding-projects') return 'scaffolding-projects'
+    return 'home'
+  }
+  const [page, setPage] = useState<Page>(pageFromPath)
+
+  useEffect(() => {
+    const onPopState = () => setPage(pageFromPath())
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+
+  useEffect(() => {
+    const meta = {
+      home: ['Safeguard Group | Construction Health & Safety Consultancy', 'Independent construction safety consultancy specialising in scaffold inspections and scaffolding project support.'],
+      'scaffold-inspections': ['Independent Scaffold Inspections | Safeguard Group', 'Advanced scaffold inspections across Hertfordshire, London and the UK with clear digital reporting and photographic evidence.'],
+      'scaffolding-projects': ['Scaffolding Project Safety Support | Safeguard Group', 'Independent safety, inspection and compliance support for commercial and domestic scaffolding projects.'],
+    }[page]
+    document.title = meta[0]
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta[1])
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://www.safeguardgroup.co.uk${window.location.pathname}`)
+  }, [page])
 
   const handleNavigate = (p: Page) => {
+    const path = p === 'home' ? '/' : `/${p}`
+    if (window.location.pathname !== path) window.history.pushState({}, '', path)
     setPage(p)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
