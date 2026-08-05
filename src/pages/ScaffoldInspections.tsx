@@ -28,7 +28,7 @@ const inspectionTypes = [
   {
     icon: <IconClock />,
     title: 'Weekly Scaffold Inspections',
-    desc: 'Mandatory 7-day interval inspections carried out by a CISRS-registered competent person. Covers all scaffold components, ties, boards, toe boards, guardrails and access points.',
+    desc: 'Mandatory 7-day interval inspections carried out by a competent Advanced Scaffold Inspector. Covers components, ties, boards, toe boards, guardrails and access points.',
     badge: 'Most Popular',
   },
   {
@@ -40,8 +40,8 @@ const inspectionTypes = [
   {
     icon: <IconZap />,
     title: 'Emergency Inspections',
-    desc: 'Post-incident, post-storm or urgent compliance inspections arranged within 24–48 hours. Full written report and re-inspection certificate issued on the same day.',
-    badge: '24–48hr Response',
+    desc: 'Post-incident, post-storm or responsive compliance inspections subject to location and availability. Clear written findings and photographic evidence are provided.',
+    badge: 'Subject to availability',
   },
   {
     icon: <IconShield />,
@@ -64,10 +64,10 @@ const inspectionTypes = [
 ]
 
 const processSteps = [
-  { num: '01', title: 'Book Online or Call', desc: 'Request an inspection via our online form or call 0800 123 4567. Emergency inspections confirmed within the hour.' },
-  { num: '02', title: 'Site Attendance', desc: 'A CISRS-registered inspector attends at the agreed time, carrying out a systematic check of every scaffold element.' },
+  { num: '01', title: 'Send Your Brief', desc: 'Request an inspection through the enquiry form with the site location, scaffold type and timescale.' },
+  { num: '02', title: 'Site Attendance', desc: 'An Advanced Scaffold Inspector attends at the agreed time and carries out a systematic check of the scaffold and access arrangements.' },
   { num: '03', title: 'Defect Recording', desc: 'All deficiencies are photographed, logged and categorised by severity: Immediate Danger, Should Not Be Used, or Advisory.' },
-  { num: '04', title: 'Digital Report Issued', desc: 'A full written inspection report with photographs is emailed to you the same day, along with a QR-coded inspection certificate.' },
+  { num: '04', title: 'Digital Report Issued', desc: 'A written inspection report with photographs, restrictions and action priorities is issued within the agreed timescale.' },
   { num: '05', title: 'Re-Inspection & Sign-Off', desc: 'Where defects are found, a follow-up re-inspection confirms remediation before a clear certificate is issued.' },
 ]
 
@@ -89,10 +89,10 @@ const reportFeatures = [
 
 const faqs = [
   { q: 'How often does scaffolding need to be inspected?', a: 'Under the Work at Height Regulations 2005, scaffolding must be inspected by a competent person: before first use, at least every 7 days during use, and following any event that may have affected stability — such as high winds, heavy rain, accidental impact, or modification to the scaffold. Safeguard Group provides weekly inspection programmes on contract or on an ad hoc basis.' },
-  { q: 'What qualifications does a scaffold inspector need?', a: 'A scaffold inspector must be a competent person — someone with sufficient training, experience and knowledge to carry out the task safely. In practice, this means a CISRS-registered scaffold inspector (Card Scheme) or an equivalent construction health and safety professional with specific scaffold inspection training. All Safeguard Group inspectors hold CISRS cards and relevant IOSH/NEBOSH qualifications.' },
+  { q: 'What qualifications does a scaffold inspector need?', a: 'A scaffold inspector must be a competent person with sufficient training, experience and knowledge for the scaffold being inspected. Safeguard Group inspections are led by an Advanced Scaffold Inspector with more than 21 years of scaffolding experience.' },
   { q: 'What is TG20 and why does it matter?', a: "TG20:21 is the NASC's guidance document for tube-and-fitting scaffold design and inspection. It provides compliant design solutions for standard scaffolds without the need for individual structural calculations. Our inspectors verify that scaffolds conform to TG20 — or, where they don't, that bespoke structural calculations have been provided by a Temporary Works engineer." },
   { q: 'What happens if the scaffold fails an inspection?', a: "If a scaffold fails an inspection, it is immediately categorised as 'Immediate Danger' (must not be used), 'Should Not Be Used' (unsafe but not immediately dangerous) or 'Advisory' (minor issues requiring monitoring). The Principal Contractor is notified immediately, a written defect schedule is issued, and a re-inspection is arranged once remedial works are confirmed complete." },
-  { q: 'Do you provide scaffold inspection certificates?', a: 'Yes. Every inspection results in a formal inspection report under Regulation 6 of the Work at Height Regulations 2005 and a QR-coded inspection certificate. Our certificates are digitally signed, time-stamped and admissible as legal records. They can be displayed on-site via a QR code linked to the full digital report.' },
+  { q: 'Do you provide scaffold inspection reports?', a: 'Yes. Each inspection results in a written record of the scaffold location, findings, condition, restrictions, photographs and actions required.' },
   { q: 'Can you inspect scaffolding erected by any contractor?', a: 'Absolutely. Safeguard Group is fully independent — we are not affiliated with any scaffolding contractor. This independence is important because our reports are unbiased and provide genuine assurance to the Principal Contractor, developer and HSE.' },
 ]
 
@@ -103,7 +103,9 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Inspection request received. A Safeguard Group inspector will confirm your booking within 2 hours.')
+    const subject = encodeURIComponent(`Scaffold inspection enquiry from ${formData.name}`)
+    const body = encodeURIComponent(`Company: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDate: ${formData.date}\nScaffold: ${formData.type}\n\n${formData.message}`)
+    window.location.href = `mailto:info@safeguardgroup.co.uk?subject=${subject}&body=${body}`
     setFormData({ name: '', company: '', email: '', phone: '', type: '', date: '', message: '' })
   }
 
@@ -114,7 +116,7 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1713593930871-e21d7f9ef4a1?w=1920&h=900&fit=crop&auto=format"
-            alt="CISRS-registered scaffold inspectors checking scaffolding compliance on a UK construction site"
+            alt="Scaffold inspector checking scaffolding compliance on a UK construction site"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.78) 60%, rgba(17,17,17,0.55) 100%)' }} />
@@ -137,14 +139,14 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
               <br /><span className="text-orange-400">Services</span>
             </h1>
             <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-2xl">
-              Independent, CISRS-registered scaffold inspections across the UK. Same-day digital reports, QR-coded certificates and 24-hour emergency response — keeping your site legally compliant and your workforce safe.
+              Independent scaffold inspections across Hertfordshire, London and the UK, with clear digital reporting, photographic evidence and practical action priorities.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#book" className="btn-primary px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
                 Book an Inspection <IconArrowRight className="w-4 h-4" />
               </a>
-              <a href="tel:+441234567890" className="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
-                <IconPhone /> Emergency: 0800 123 4567
+              <a href="mailto:info@safeguardgroup.co.uk" className="btn-outline px-7 py-3.5 rounded-full text-sm flex items-center gap-2">
+                <IconMail /> Email inspection details
               </a>
             </div>
           </div>
@@ -158,7 +160,7 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
             { val: '2,400+', label: 'Inspections Completed' },
             { val: '48hr', label: 'Emergency Response' },
             { val: 'Same Day', label: 'Digital Report Delivery' },
-            { val: '100%', label: 'NASC TG20 Compliant' },
+            { val: '21+', label: 'Years in Scaffolding' },
           ].map((s) => (
             <div key={s.label} className="text-center px-4 py-2">
               <div className="text-2xl font-black text-white" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>{s.val}</div>
@@ -217,7 +219,7 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
                   </div>
                   <span className="font-bold text-neutral-900 text-sm">Report Issued</span>
                 </div>
-                <div className="text-xs text-neutral-500 leading-snug">Digital report + QR certificate emailed same day</div>
+                <div className="text-xs text-neutral-500 leading-snug">Digital report issued within the agreed timescale</div>
               </div>
             </div>
           </div>
@@ -327,7 +329,7 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
                 <div className="space-y-3">
                   {[
                     { label: 'Inspection Date', value: '04 August 2025', ok: true },
-                    { label: 'Inspector', value: 'CISRS Card Holder — J. Williams', ok: true },
+                    { label: 'Inspector', value: 'Advanced Scaffold Inspector', ok: true },
                     { label: 'Scaffold Type', value: 'Tube & Fitting — Independent', ok: true },
                     { label: 'TG20 Compliance', value: 'Compliant', ok: true },
                     { label: 'Ties Checked', value: '47 of 47 — All Secure', ok: true },
@@ -416,11 +418,11 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
                 Schedule Your<br /><span className="text-orange-400">Scaffold Inspection</span>
               </h2>
               <p className="text-white/60 text-base leading-relaxed mb-8">
-                Complete the form and a CISRS-registered inspector will confirm your booking within 2 hours. Emergency inspections available within 24–48 hours nationwide.
+                Complete the form with the site location, scaffold type and required date. We will confirm scope and availability by email.
               </p>
               <div className="space-y-4">
                 {[
-                  { icon: <IconPhone />, text: '0800 123 4567 — Emergency line available 24/7' },
+                  { icon: <IconMail />, text: 'info@safeguardgroup.co.uk' },
                   { icon: <IconMail />, text: 'inspections@safeguardgroup.co.uk' },
                   { icon: <IconMapPin />, text: 'Nationwide coverage — England, Scotland & Wales' },
                 ].map((item) => (
@@ -475,7 +477,7 @@ export default function ScaffoldInspections({ onNavigate }: Props) {
               <button type="submit" className="btn-primary w-full py-4 rounded-xl text-base flex items-center justify-center gap-2">
                 Request Inspection <IconArrowRight />
               </button>
-              <p className="text-xs text-neutral-400 text-center">Confirmation within 2 hours. Emergency: 0800 123 4568</p>
+              <p className="text-xs text-neutral-400 text-center">This form prepares an email in your device. Your details are not stored by this website.</p>
             </form>
           </div>
         </div>
