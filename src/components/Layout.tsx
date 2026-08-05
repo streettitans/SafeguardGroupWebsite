@@ -61,10 +61,10 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
       {/* Top utility bar */}
       <div className="border-b border-white/10 hidden md:flex">
         <div className="max-w-7xl mx-auto w-full px-6 flex items-center justify-between py-2 text-xs text-white/50">
-          <span>UK&#39;s Leading Construction Health &amp; Safety Consultancy</span>
+          <span>Independent Construction Health &amp; Safety Consultancy</span>
           <div className="flex items-center gap-6">
-            <a href="tel:+441234567890" className="flex items-center gap-1.5 hover:text-orange-400 transition-colors">
-              <IconPhone /> 0800 123 4567
+            <a href="mailto:info@safeguardgroup.co.uk" className="flex items-center gap-1.5 hover:text-orange-400 transition-colors">
+              <IconMail /> Request a call back
             </a>
             <a href="mailto:info@safeguardgroup.co.uk" className="flex items-center gap-1.5 hover:text-orange-400 transition-colors">
               <IconMail /> info@safeguardgroup.co.uk
@@ -95,8 +95,7 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
           ))}
         </div>
         <div className="hidden lg:flex items-center gap-3">
-          <span className="text-sm text-white/50">Emergency:</span>
-          <a href="tel:+441234567890" className="text-sm text-orange-400 font-semibold hover:text-orange-300 transition-colors">0800 123 4567</a>
+          <a href="mailto:info@safeguardgroup.co.uk" className="text-sm text-orange-400 font-semibold hover:text-orange-300 transition-colors">info@safeguardgroup.co.uk</a>
           <button onClick={() => handleNav('scaffold-inspections')} className="btn-primary text-sm px-5 py-2.5 rounded-full ml-2">
             Book Inspection
           </button>
@@ -123,8 +122,8 @@ export function Nav({ currentPage, onNavigate }: NavProps) {
             <button onClick={() => handleNav('scaffold-inspections')} className="btn-primary text-center py-3 rounded-full text-sm">
               Book Inspection
             </button>
-            <a href="tel:+441234567890" className="btn-outline text-center py-3 rounded-full text-sm">
-              Call 0800 123 4567
+            <a href="mailto:info@safeguardgroup.co.uk" className="btn-outline text-center py-3 rounded-full text-sm">
+              Request a call back
             </a>
           </div>
         </div>
@@ -149,7 +148,7 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="col-span-2">
           <img src={logo} alt="Safeguard Group" className="h-12 w-auto mb-5 brightness-0 invert" />
           <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
-            UK&#39;s leading independent construction health and safety consultancy. Protecting projects, workforces and reputations since 2010.
+            Independent construction health and safety consultancy specialising in scaffolding inspections and practical site compliance.
           </p>
           <div className="flex gap-3">
             {[<IconLinkedIn />, <IconFacebook />, <IconInstagram />].map((icon, i) => (
@@ -201,18 +200,15 @@ export function Footer({ onNavigate }: FooterProps) {
             <button className="btn-primary px-3 py-2.5 rounded-lg text-sm flex-shrink-0"><IconArrowRight className="w-4 h-4" /></button>
           </div>
           <div className="space-y-2">
-            <a href="tel:+441234567890" className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"><IconPhone /> 0800 123 4567</a>
-            <a href="https://wa.me/441234567890" className="flex items-center gap-2 text-sm text-neutral-400 hover:text-green-400 transition-colors"><IconWhatsapp /> WhatsApp Us</a>
+            <a href="mailto:info@safeguardgroup.co.uk" className="flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors"><IconMail /> Email Safeguard Group</a>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <div>&copy; 2025 Safeguard Group Health &amp; Safety Consultancy. Registered in England &amp; Wales.</div>
+          <div>&copy; {new Date().getFullYear()} Safeguard Group Health &amp; Safety Consultancy.</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            <a href="mailto:info@safeguardgroup.co.uk?subject=Privacy%20enquiry" className="hover:text-white transition-colors">Privacy enquiries</a>
           </div>
         </div>
       </div>
@@ -223,11 +219,8 @@ export function Footer({ onNavigate }: FooterProps) {
 export function FloatingCTAs() {
   return (
     <div className="float-cta">
-      <a href="https://wa.me/441234567890" className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center text-white shadow-xl transition-all hover:scale-110" aria-label="WhatsApp">
-        <IconWhatsapp />
-      </a>
-      <a href="tel:+441234567890" className="w-12 h-12 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center text-white shadow-xl transition-all hover:scale-110" aria-label="Call us">
-        <IconPhone />
+      <a href="mailto:info@safeguardgroup.co.uk" className="w-12 h-12 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center text-white shadow-xl transition-all hover:scale-110" aria-label="Email Safeguard Group">
+        <IconMail />
       </a>
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-12 h-12 rounded-full bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-white shadow-xl transition-all hover:scale-110" aria-label="Back to top">
         <IconArrowUp />
